@@ -44,7 +44,7 @@ const Country = ({filteredCountries}) => {
                 </ul>
                 <img src={country.flag} alt='Country flag' width="150" />
                 <h1>Weather in {country.capital}</h1>
-                <p><b>temperature:</b> {weather.temparature} Celsius</p>
+                <p><b>temperature:</b> {weather.temperature} Celsius</p>
                 <img src={weather.weather_icons} alt='Weather incon' />
                 <p><b>wind: </b>{weather.wind_speed} km/h direction {weather.wind_dir}</p>
             </div>
