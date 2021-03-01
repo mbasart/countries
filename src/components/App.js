@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Filter from './Filter'
 import Country from './Country'
+import List from './List'
 import axios from 'axios'
 
 const App = () => {
@@ -17,6 +18,11 @@ const App = () => {
         })
     }, [])
 
+    const handleShowClick = (countryName) => {
+        setFilteredCountries(countries.filter(country => country.name.toLowerCase().includes(countryName.toLowerCase())))
+        setNameFilter(countryName)
+    }
+
     const handleNameFilterChange = (event) => {
         setFilteredCountries(countries.filter(country => event.target.value === '' ? true : country.name.toLowerCase().includes(event.target.value.toLowerCase())))
         setNameFilter(event.target.value)
@@ -25,6 +31,7 @@ const App = () => {
     return (
         <div>
             <Filter nameFilter={nameFilter} handleNameFilterChange={handleNameFilterChange} /> 
+            <List filteredCountries={filteredCountries} handleShowClick={handleShowClick} />
             {filteredCountries.length === 1 ? <Country filteredCountries={filteredCountries} /> : null}
         </div>
     )
